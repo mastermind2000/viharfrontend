@@ -38,7 +38,8 @@ export default function Home() {
       email: values.email,
       role: values.role,
       group: values.group,
-      policy: values.policy
+      policy: values.policy,
+      id: values.id
     })
       .then((response) => {
         console.log(response);

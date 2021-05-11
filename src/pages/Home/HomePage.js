@@ -206,7 +206,7 @@ export default function Home() {
                   </Condition>
                 </Grid>
                 <Grid item xs={12}>
-                  <Condition when="role" is="student">
+                  <Condition when="group" is="Student">
                     <table>
                       <tr>
                         <th> Policies </th>

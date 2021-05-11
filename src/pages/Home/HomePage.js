@@ -28,7 +28,7 @@ export default function Home() {
     group: "",
     policy: "",
     account: "",
-    id: ""
+    aid: ""
   });
   const onSubmit = async (values) => {
     const url =
@@ -39,16 +39,18 @@ export default function Home() {
       role: values.role,
       group: values.group,
       policy: values.policy,
-      id: values.id
+      aid: values.aid
     })
       .then((response) => {
         console.log(response);
+        window.alert("success");
       })
       .catch((error) => {
         console.log(error);
+        window.alert("failed");
       });
     console.log(values);
-    window.alert(JSON.stringify(values, 0, 2));
+    //window.alert(JSON.stringify(values, 0, 2));
   };
 
   const validate = (values) => {
@@ -78,7 +80,7 @@ export default function Home() {
           role: "student",
           account: "existingid",
           policy: "Policy1",
-          id: "405985712632"
+          aid: "405985712632"
         }}
         validate={validate}
         render={({ handleSubmit, reset, submitting, pristine, values }) => (
@@ -268,7 +270,7 @@ export default function Home() {
                     <Field
                       fullWidth
                       required
-                      name="id"
+                      name="aid"
                       component={TextField}
                       type="text"
                       label="Account ID"

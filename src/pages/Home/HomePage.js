@@ -157,7 +157,7 @@ export default function Home() {
                       label="Apply Group"
                       formControlProps={{ fullWidth: true }}
                     >
-                      <MenuItem value="Student">Student</MenuItem>
+                      <MenuItem value="Student">B-Tech CS</MenuItem>
                     </Field>
                   </Condition>
                   <Condition when="role" is="faculty">

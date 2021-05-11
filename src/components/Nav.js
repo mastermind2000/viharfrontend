@@ -173,7 +173,7 @@ class Nav extends Component {
       <Navigation>
         <div className="logo">
           <Link to="/">
-            <p>Self Service UI</p>
+            <p>Virtual SageMaker Admin</p>
           </Link>
         </div>
         <nav className="nav">

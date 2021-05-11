@@ -299,7 +299,6 @@ export default function Home() {
                 </Grid>
               </Grid>
             </Paper>
-            <pre> {JSON.stringify(values, 0, 2)} </pre>
           </form>
         )}
       />

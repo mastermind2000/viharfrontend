@@ -199,7 +199,7 @@ class Nav extends Component {
               <li>Edit Group</li>
             </NavLink>
             <NavLink activeClassName="active" to="/about">
-              <li>Policies</li>
+              <li>Users</li>
             </NavLink>
             <NavLink activeClassName="active" to="/sauvegarde">
               <li>Usage</li>

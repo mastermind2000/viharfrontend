@@ -46,12 +46,6 @@ const validate = (values) => {
   if (!values.email) {
     errors.email = "Required";
   }
-  if (!values.policy) {
-    errors.policy = "Select a policy";
-  }
-  if (!values.instance) {
-    errors.instance = "Select an instance";
-  }
   return errors;
 };
 export default function Contact() {

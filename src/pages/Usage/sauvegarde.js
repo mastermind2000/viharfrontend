@@ -50,6 +50,7 @@ const Sauvegarde = () => {
             <td>{instance.iname}</td>
             <td>{instance.status}</td>
             <td>{instance.tl}</td>
+            <td>{instance.tu}</td>
           </tr>
         );
       })
@@ -66,6 +67,7 @@ const Sauvegarde = () => {
             <th>Name</th>
             <th>Status</th>
             <th>Threshold Time</th>
+            <th>Time Left</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import Axios from "axios";
 import { Form, Field } from "react-final-form";
 import { TextField, Checkbox, Radio, Select } from "final-form-material-ui";
 import {
@@ -20,13 +21,26 @@ import {
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 const onSubmit = async (values) => {
-  const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
+  const url =
+    "https://0u6vb56kth.execute-api.us-east-2.amazonaws.com/dev/delete";
+  Axios.post(url, {
+    name: values.name,
+    email: values.email
+  })
+    .then((response) => {
+      console.log(response);
+      window.alert("success");
+    })
+    .catch((error) => {
+      console.log(error);
+      window.alert("failed");
+    });
+  console.log(values);
+  //window.alert(JSON.stringify(values, 0, 2));
 };
 const validate = (values) => {
   const errors = {};
-  if (!values.Name) {
+  if (!values.name) {
     errors.Name = "Required";
   }
   if (!values.email) {
@@ -40,18 +54,12 @@ const validate = (values) => {
   }
   return errors;
 };
-const Condition = ({ when, is, children }) => (
-  <Field name={when} subscription={{ value: true }}>
-    {({ input: { value } }) => (value === is ? children : null)}
-  </Field>
-);
 export default function Contact() {
   return (
     <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
       <CssBaseline />
       <Form
         onSubmit={onSubmit}
-        initialValues={{ role: "student", time: "20" }}
         validate={validate}
         render={({ handleSubmit, reset, submitting, pristine, values }) => (
           <form onSubmit={handleSubmit} noValidate>
@@ -61,7 +69,7 @@ export default function Contact() {
                   <Field
                     fullWidth
                     required
-                    name="Name"
+                    name="name"
                     component={TextField}
                     type="text"
                     label="Name"

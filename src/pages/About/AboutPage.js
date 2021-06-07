@@ -88,6 +88,38 @@ const About = () => {
         <button onClick={handleClick}>Load</button>
       </div>
       <div id="app">{data.length > 0 && master()}</div>
+      <div>
+        <table>
+          <tr>
+            <th> Policies </th>
+            <th> Thresholds </th>
+          </tr>
+          <tr>
+            <td>Jupyter Notebook of instance type ml.t2.medium</td>
+            <td> 60 mins </td>
+          </tr>
+          <tr>
+            <td> Jupyter Notebook of instance type ml.t2.large </td>
+            <td> 30 mins </td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              Processing Job of instance ml.t3.medium 1 instance and 1GB
+              additional Storage
+            </td>
+            <td> 4 hrs</td>
+          </tr>
+          <tr>
+            <td>
+              {" "}
+              Training Job of instance ml.t3.medium 1 instance and 1GB
+              additional Storage
+            </td>
+            <td> 4 hrs</td>
+          </tr>
+        </table>
+      </div>
     </React.Fragment>
   );
 };

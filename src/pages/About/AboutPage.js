@@ -28,11 +28,11 @@ const About = () => {
   const [data, setData] = useState([]);
   const [trigger, setTrigger] = useState(false);
   const url = "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/user";
-  const handleClick = () => {
+  useEffect(() => {
     axios.get(url).then((json) => setData(json.data));
 
     console.log(data);
-  };
+  });
   const renderTable = () => {
     return (
       data &&
@@ -84,10 +84,9 @@ const About = () => {
   };
   return (
     <React.Fragment>
-      <div>
-        <button onClick={handleClick}>Load</button>
-      </div>
-      <div id="app">{data.length > 0 && master()}</div>
+      <div>Users</div>
+      <div id="app">{master()}</div>
+      <div> Policies </div>
       <div>
         <table>
           <tr>

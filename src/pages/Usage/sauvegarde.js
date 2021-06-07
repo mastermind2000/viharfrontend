@@ -28,17 +28,24 @@ const Sauvegarde = () => {
   const [data, setData] = useState([]);
   const [trigger, setTrigger] = useState(false);
   const url = "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/list";
-  const handleClick = () => {
+  /*const handleClick = () => {
     axios.get(url).then((json) => setData(json.data));
 
     console.log(data);
-  };
+  };*/
+  useEffect(() => {
+    axios.get(url).then((json) => setData(json.data));
+
+    console.log(data);
+  }, []);
   const renderTable = () => {
     return (
       data &&
       data.map((instance) => {
         return (
           <tr>
+            <td>{instance.type}</td>
+            <td>{instance.itype}</td>
             <td>{instance.arn}</td>
             <td>{instance.iname}</td>
             <td>{instance.status}</td>
@@ -53,6 +60,8 @@ const Sauvegarde = () => {
       <table className="table">
         <thead>
           <tr>
+            <th>Type</th>
+            <th>Instance Type</th>
             <th>Arn</th>
             <th>Name</th>
             <th>Status</th>
@@ -86,10 +95,7 @@ const Sauvegarde = () => {
   };
   return (
     <React.Fragment>
-      <div>
-        <button onClick={handleClick}>Load</button>
-      </div>
-      <div id="app">{data.length > 0 && master()}</div>
+      <div id="app">{master()}</div>
     </React.Fragment>
   );
 };

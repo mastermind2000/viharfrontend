@@ -38,7 +38,54 @@ const Sauvegarde = () => {
 
     console.log(data);
   }, []);
+  var ty1 = 0;
+  var ty2 = 0;
+  data.map((instance) => {
+    {
+      instance.itype === "ml.t2.medium" ? ty1++ : ty2++;
+    }
+  });
+  const rendsub = () => {
+    var tu1 = 0;
+    var tu2 = 0;
+    var tt1 = ty1 * 60;
+    var tt2 = ty2 * 30;
+    data.map((instance) => {
+      {
+        instance.itype === "ml.t2.medium"
+          ? (tu1 += instance.tu)
+          : (tu2 += instance.tu);
+      }
+    });
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>Instance</th>
+            <th>Type</th>
+            <th>Total Time</th>
+            <th>Time Used</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jupyter Notebook</td>
+            <td>ml.t2.medium</td>
+            <td>{tt1}</td>
+            <td>{tt1 - tu1}</td>
+          </tr>
+          <tr>
+            <td>Jupyter Notebook</td>
+            <td>ml.t2.large</td>
+            <td>{tt2}</td>
+            <td>{tt2 - tu2}</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  };
   const renderTable = () => {
+    console.log("The type 1 " + ty1 + " The type 2 " + ty2);
     return (
       data &&
       data.map((instance) => {
@@ -51,7 +98,9 @@ const Sauvegarde = () => {
             <td>{instance.status}</td>
             <td>{instance.tl}</td>
             <td>
-              {instance.tu < 0 ? "Loading... Please Refresh" : instance.tu}
+              {instance.itype === "ml.t2.medium"
+                ? 60 - instance.tu
+                : 30 - instance.tu}
             </td>
           </tr>
         );
@@ -99,6 +148,7 @@ const Sauvegarde = () => {
   };
   return (
     <React.Fragment>
+      <div>{rendsub()}</div>
       <div id="app">{master()}</div>
     </React.Fragment>
   );

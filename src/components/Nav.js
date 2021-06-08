@@ -170,7 +170,7 @@ class Nav extends Component {
     const { isExpanded } = this.state;
 
     return (
-      <Navigation>
+      <Navigation className="test">
         <div className="logo">
           <Link to="/">
             <p>Virtual SageMaker Admin</p>

@@ -42,10 +42,16 @@ const Sauvegarde = () => {
     console.log(data);
   };*/
   useEffect(() => {
+    (async () => {
+      const json = await axios.get(url);
+      setData(json.data);
+    })();
+  }, []);
+  /*useEffect(() => {
     axios.get(url).then((json) => setData(json.data));
 
     console.log(data);
-  }, []);
+  }, []);*/
   var ty1 = 0;
   var ty2 = 0;
   var arn = [];

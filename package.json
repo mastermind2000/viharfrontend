@@ -22,6 +22,7 @@
     "native-forms": "1.5.3",
     "pages": "0.0.16",
     "react": "17.0.1",
+    "react-chartjs-2": "3.0.3",
     "react-cv": "1.2.0",
     "react-dom": "17.0.1",
     "react-final-form": "6.5.3",

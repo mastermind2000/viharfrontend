@@ -28,6 +28,9 @@ const Sauvegarde = () => {
   const [data, setData] = useState([]);
   const [trigger, setTrigger] = useState(false);
   const url = "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/list";
+  const handleClick = () => {
+    setTrigger(true);
+  };
   /*const handleClick = () => {
     axios.get(url).then((json) => setData(json.data));
 
@@ -149,7 +152,10 @@ const Sauvegarde = () => {
   return (
     <React.Fragment>
       <div>{rendsub()}</div>
-      <div id="app">{master()}</div>
+      <div id="monb">
+        <button onClick={handleClick}> Show Details </button>
+      </div>
+      <div id="app">{trigger && master()}</div>
     </React.Fragment>
   );
 };

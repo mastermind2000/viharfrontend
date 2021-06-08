@@ -19,6 +19,7 @@ import {
   FormControl,
   FormControlLabel
 } from "@material-ui/core";
+import { Bar } from "react-chartjs-2";
 // Picker
 
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
@@ -27,9 +28,13 @@ import "./table.css";
 const Sauvegarde = () => {
   const [data, setData] = useState([]);
   const [trigger, setTrigger] = useState(false);
+  const [trig, setTrig] = useState(false);
   const url = "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/list";
   const handleClick = () => {
     setTrigger(true);
+  };
+  const handClick = () => {
+    setTrig(true);
   };
   /*const handleClick = () => {
     axios.get(url).then((json) => setData(json.data));
@@ -43,11 +48,44 @@ const Sauvegarde = () => {
   }, []);
   var ty1 = 0;
   var ty2 = 0;
+  var arn = [];
+  var time = [];
   data.map((instance) => {
     {
+      var det = instance.iname + " " + instance.itype;
+      arn.push(det);
+      time.push(
+        instance.itype === "ml.t2.medium" ? 60 - instance.tu : 30 - instance.tu
+      );
       instance.itype === "ml.t2.medium" ? ty1++ : ty2++;
     }
   });
+  const chart = () => {
+    const bdata = {
+      labels: arn,
+      datasets: [
+        {
+          label: "# Time Used",
+          data: time,
+          backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+          borderColor: ["rgba(255, 99, 132, 0.2)"],
+          borderWidth: 1
+        }
+      ]
+    };
+    const options = {
+      scales: {
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true
+            }
+          }
+        ]
+      }
+    };
+    return <Bar data={bdata} options={options} />;
+  };
   const rendsub = () => {
     var tu1 = 0;
     var tu2 = 0;
@@ -154,8 +192,10 @@ const Sauvegarde = () => {
       <div>{rendsub()}</div>
       <div id="monb">
         <button onClick={handleClick}> Show Details </button>
+        <button onClick={handClick}> Show Chart </button>
       </div>
       <div id="app">{trigger && master()}</div>
+      <div id="ap">{trig && chart()}</div>
     </React.Fragment>
   );
 };

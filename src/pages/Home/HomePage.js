@@ -43,11 +43,11 @@ export default function Home() {
     })
       .then((response) => {
         console.log(response);
-        window.alert("success");
+        window.alert("User Created");
       })
       .catch((error) => {
         console.log(error);
-        window.alert("failed");
+        window.alert("Some Error Occured");
       });
     console.log(values);
     //window.alert(JSON.stringify(values, 0, 2));
@@ -181,36 +181,6 @@ export default function Home() {
                     >
                       <MenuItem value="Admin">Admin</MenuItem>
                     </Field>
-                  </Condition>
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Condition when="group" is="Student">
-                    <table>
-                      <tr>
-                        <th> Policies </th>
-                        <th> Thresholds </th>
-                      </tr>
-                      <tr>
-                        <td>
-                          {" "}
-                          Jupyter Notebook of instance type ml.t2.medium{" "}
-                        </td>
-                        <td> 60 mins </td>
-                      </tr>
-                      <tr>
-                        <td> Jupyter Notebook of instance type ml.t2.large </td>
-                        <td> 30 mins </td>
-                      </tr>
-                      <tr>
-                        <td> Processing Job of instance ml.t3.medium </td>
-                        <td> 1 instance and 1GB additional Storage</td>
-                      </tr>
-                      <tr>
-                        <td> Training Job of instance ml.t3.medium </td>
-                        <td> 1 instance and 1GB additional Storage</td>
-                      </tr>
-                    </table>
                   </Condition>
                 </Grid>
                 <Grid item xs={12}>

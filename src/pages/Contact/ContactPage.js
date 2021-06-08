@@ -29,11 +29,11 @@ const onSubmit = async (values) => {
   })
     .then((response) => {
       console.log(response);
-      window.alert("success");
+      window.alert("User Deleted");
     })
     .catch((error) => {
       console.log(error);
-      window.alert("failed");
+      window.alert("Some Error Occured");
     });
   console.log(values);
   //window.alert(JSON.stringify(values, 0, 2));

@@ -84,9 +84,9 @@ const About = () => {
   };
   return (
     <React.Fragment>
-      <div>Users</div>
+      <div className="user">Users</div>
       <div id="app">{master()}</div>
-      <div> Policies </div>
+      <div className="policies"> Policies </div>
       <div>
         <table>
           <tr>

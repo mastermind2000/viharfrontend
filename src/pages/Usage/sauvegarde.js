@@ -50,7 +50,7 @@ const Sauvegarde = () => {
             <td>{instance.iname}</td>
             <td>{instance.status}</td>
             <td>{instance.tl}</td>
-            <td>{instance.tu}</td>
+            <td>{instance.tu < 0 ? "Loading" : instance.tu}</td>
           </tr>
         );
       })

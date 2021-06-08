@@ -17,7 +17,47 @@ import {
   FormControl,
   FormControlLabel
 } from "@material-ui/core";
-// Picker
+/* Picker
+<Grid item xs={12}>
+                  <FormControl component="fieldset">
+                    <FormLabel component="legend">Add Roles</FormLabel>
+                    <RadioGroup row>
+                      <FormControlLabel
+                        label="Student"
+                        control={
+                          <Field
+                            name="role"
+                            component={Radio}
+                            type="radio"
+                            value="student"
+                          />
+                        }
+                      />
+                      <FormControlLabel
+                        label="Faculty"
+                        control={
+                          <Field
+                            name="role"
+                            component={Radio}
+                            type="radio"
+                            value="faculty"
+                          />
+                        }
+                      />
+                      <FormControlLabel
+                        label="Admin"
+                        control={
+                          <Field
+                            name="role"
+                            component={Radio}
+                            type="radio"
+                            value="admin"
+                          />
+                        }
+                      />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>*/
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 export default function Home() {
@@ -107,46 +147,6 @@ export default function Home() {
                     type="email"
                     label="Email"
                   />
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">Add Roles</FormLabel>
-                    <RadioGroup row>
-                      <FormControlLabel
-                        label="Student"
-                        control={
-                          <Field
-                            name="role"
-                            component={Radio}
-                            type="radio"
-                            value="student"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Faculty"
-                        control={
-                          <Field
-                            name="role"
-                            component={Radio}
-                            type="radio"
-                            value="faculty"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Admin"
-                        control={
-                          <Field
-                            name="role"
-                            component={Radio}
-                            type="radio"
-                            value="admin"
-                          />
-                        }
-                      />
-                    </RadioGroup>
-                  </FormControl>
                 </Grid>
                 <Grid item xs={12}>
                   <Condition when="role" is="student">

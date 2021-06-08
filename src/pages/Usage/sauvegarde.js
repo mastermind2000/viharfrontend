@@ -69,7 +69,7 @@ const Sauvegarde = () => {
             <th>Name</th>
             <th>Status</th>
             <th>Threshold Time</th>
-            <th>Time Left</th>
+            <th>Actual Usage</th>
           </tr>
         </thead>
         <tbody>{renderTable()}</tbody>

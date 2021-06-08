@@ -73,8 +73,8 @@ const Sauvegarde = () => {
         {
           label: "# Time Used",
           data: time,
-          backgroundColor: ["rgba(255, 99, 132, 0.2)"],
-          borderColor: ["rgba(255, 99, 132, 0.2)"],
+          backgroundColor: ["rgba(255, 99, 132, 0.8)"],
+          borderColor: ["rgba(255, 99, 132, 0.8)"],
           borderWidth: 1
         }
       ]
@@ -195,14 +195,16 @@ const Sauvegarde = () => {
   };
   return (
     <React.Fragment>
-      <div> Summary </div>
+      <div className="summary"> Summary </div>
       <div>{rendsub()}</div>
-      <div id="monb">
+      <div className="monb">
         <button onClick={handleClick}> Show Details </button>
         <button onClick={handClick}> Show Chart </button>
       </div>
-      <div id="app">{trigger && master()}</div>
-      <div id="ap">{trig && chart()}</div>
+      <div className="det">{trigger && "Detail"}</div>
+      <div className="detail">{trigger && master()}</div>
+      <div className="ct">{trig && "Chart"}</div>
+      <div className="ap">{trig && chart()}</div>
     </React.Fragment>
   );
 };

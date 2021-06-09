@@ -20,7 +20,7 @@ import {
 // Picker
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import CSVReader from "react-csv-reader";
-
+import "./style.css";
 export default function Contact() {
   const [fdata, setData] = useState(null);
   const url =
@@ -87,6 +87,7 @@ export default function Contact() {
   };
   return (
     <React.Fragment>
+      <div className="t1"> Single User Deletion </div>
       <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
         <CssBaseline />
         <Form
@@ -143,10 +144,10 @@ export default function Contact() {
           )}
         />
       </div>
+      <div className="t2"> Multiple Users Deletion (Upload .csv file) </div>
       <div className="fr">
         <CSVReader
           cssClass="react-csv-input"
-          label="Select CSV with secret Death Star statistics"
           onFileLoaded={handleForce}
           parserOptions={papaparseOptions}
         />

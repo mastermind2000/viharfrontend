@@ -60,7 +60,7 @@ import CSVReader from "react-csv-reader";
                   </FormControl>
                 </Grid>*/
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-
+import "./style.css";
 export default function Home() {
   const [fdata, setData] = useState(null);
   const [formData, setFormData] = useState({
@@ -152,6 +152,7 @@ export default function Home() {
   );
   return (
     <React.Fragment>
+      <div className="t1">Single user Creation</div>
       <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
         <CssBaseline />
         <Form
@@ -292,10 +293,10 @@ export default function Home() {
           )}
         />
       </div>
+      <div className="t2">Multiple user Creation (Upload .csv file)</div>
       <div className="fr">
         <CSVReader
           cssClass="react-csv-input"
-          label="Select CSV with secret Death Star statistics"
           onFileLoaded={handleForce}
           parserOptions={papaparseOptions}
         />

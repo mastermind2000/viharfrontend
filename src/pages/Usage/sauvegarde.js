@@ -123,14 +123,14 @@ const Sauvegarde = () => {
             <td>ml.t2.medium</td>
             <td>{ty1}</td>
             <td>{dt1}</td>
-            <td>{tt1 - tu1}</td>
+            <td>{tu1}</td>
           </tr>
           <tr>
             <td>Jupyter Notebook</td>
             <td>ml.t2.large</td>
             <td>{ty2}</td>
             <td>{dt2}</td>
-            <td>{tt2 - tu2}</td>
+            <td>{tu2}</td>
           </tr>
         </tbody>
       </table>
@@ -148,11 +148,7 @@ const Sauvegarde = () => {
             <td>{instance.arn}</td>
             <td>{instance.iname}</td>
             <td>{instance.status}</td>
-            <td>
-              {instance.itype === "ml.t2.medium"
-                ? 60 - instance.tu
-                : 30 - instance.tu}
-            </td>
+            <td>{instance.tu}</td>
           </tr>
         );
       })

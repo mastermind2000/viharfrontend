@@ -110,6 +110,7 @@ const Sauvegarde = () => {
           <tr>
             <th>Instance</th>
             <th>Type</th>
+            <th># Instances</th>
             <th>Total Time</th>
             <th>Time Used</th>
           </tr>
@@ -118,12 +119,14 @@ const Sauvegarde = () => {
           <tr>
             <td>Jupyter Notebook</td>
             <td>ml.t2.medium</td>
+            <td>{ty1}</td>
             <td>{tt1}</td>
             <td>{tt1 - tu1}</td>
           </tr>
           <tr>
             <td>Jupyter Notebook</td>
             <td>ml.t2.large</td>
+            <td>{ty2}</td>
             <td>{tt2}</td>
             <td>{tt2 - tu2}</td>
           </tr>

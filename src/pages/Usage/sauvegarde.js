@@ -60,9 +60,7 @@ const Sauvegarde = () => {
     {
       var det = instance.iname + " " + instance.itype;
       arn.push(det);
-      time.push(
-        instance.itype === "ml.t2.medium" ? 60 - instance.tu : 30 - instance.tu
-      );
+      time.push(instance.tu);
       instance.itype === "ml.t2.medium" ? ty1++ : ty2++;
     }
   });

@@ -17,6 +17,7 @@ import {
   FormControl,
   FormControlLabel
 } from "@material-ui/core";
+import CSVReader from "react-csv-reader";
 /* Picker
 <Grid item xs={12}>
                   <FormControl component="fieldset">
@@ -61,6 +62,7 @@ import {
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 
 export default function Home() {
+  const [fdata, setData] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -70,9 +72,22 @@ export default function Home() {
     account: "",
     aid: ""
   });
+  const url =
+    "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/entry";
+  const handleForce = (data) => {
+    setData(data);
+  };
+  const handleClick = () => {
+    console.log(fdata);
+    console.log(fdata.length);
+  };
+  const papaparseOptions = {
+    header: true,
+    dynamicTyping: true,
+    skipEmptyLines: true,
+    transformHeader: (header) => header.toLowerCase().replace(/\W/g, "_")
+  };
   const onSubmit = async (values) => {
-    const url =
-      "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/entry";
     Axios.post(url, {
       name: values.name,
       email: values.email,
@@ -112,145 +127,158 @@ export default function Home() {
     </Field>
   );
   return (
-    <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
-      <CssBaseline />
-      <Form
-        onSubmit={onSubmit}
-        initialValues={{
-          role: "student",
-          account: "existingid",
-          policy: "Policy1",
-          aid: "405985732162"
-        }}
-        validate={validate}
-        render={({ handleSubmit, reset, submitting, pristine, values }) => (
-          <form onSubmit={handleSubmit} noValidate>
-            <Paper style={{ padding: 16 }}>
-              <Grid container alignItems="flex-start" spacing={2}>
-                <Grid item xs={12}>
-                  <Field
-                    fullWidth
-                    required
-                    name="name"
-                    component={TextField}
-                    type="text"
-                    label="Name"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Field
-                    name="email"
-                    fullWidth
-                    required
-                    component={TextField}
-                    type="email"
-                    label="Email"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <Condition when="role" is="student">
-                    <Field
-                      fullWidth
-                      name="group"
-                      component={Select}
-                      label="Apply Group"
-                      formControlProps={{ fullWidth: true }}
-                    >
-                      <MenuItem value="Student">B-Tech CS</MenuItem>
-                    </Field>
-                  </Condition>
-                  <Condition when="role" is="faculty">
-                    <Field
-                      fullWidth
-                      name="group"
-                      component={Select}
-                      label="Apply Group"
-                      formControlProps={{ fullWidth: true }}
-                    >
-                      <MenuItem value="Faculty">Faculty</MenuItem>
-                    </Field>
-                  </Condition>
-                  <Condition when="role" is="admin">
-                    <Field
-                      fullWidth
-                      name="group"
-                      component={Select}
-                      label="Apply Group"
-                      formControlProps={{ fullWidth: true }}
-                    >
-                      <MenuItem value="Admin">Admin</MenuItem>
-                    </Field>
-                  </Condition>
-                </Grid>
-                <Grid item xs={12}>
-                  <FormControl component="fieldset">
-                    <FormLabel component="legend">
-                      Where Do You want to create user
-                    </FormLabel>
-                    <RadioGroup row>
-                      <FormControlLabel
-                        label="Existing ID"
-                        control={
-                          <Field
-                            name="account"
-                            component={Radio}
-                            type="radio"
-                            value="existingid"
-                          />
-                        }
-                      />
-                      <FormControlLabel
-                        label="Create a new Account"
-                        control={
-                          <Field
-                            name="account"
-                            component={Radio}
-                            type="radio"
-                            value="newaccount"
-                          />
-                        }
-                      />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={12}>
-                  <Condition when="account" is="existingid">
+    <React.Fragment>
+      <div style={{ padding: 16, margin: "auto", maxWidth: 600 }}>
+        <CssBaseline />
+        <Form
+          onSubmit={onSubmit}
+          initialValues={{
+            role: "student",
+            account: "existingid",
+            policy: "Policy1",
+            aid: "405985732162"
+          }}
+          validate={validate}
+          render={({ handleSubmit, reset, submitting, pristine, values }) => (
+            <form onSubmit={handleSubmit} noValidate>
+              <Paper style={{ padding: 16 }}>
+                <Grid container alignItems="flex-start" spacing={2}>
+                  <Grid item xs={12}>
                     <Field
                       fullWidth
                       required
-                      name="aid"
+                      name="name"
                       component={TextField}
                       type="text"
-                      label="Account ID"
+                      label="Name"
                     />
-                  </Condition>
+                  </Grid>
+
+                  <Grid item xs={12}>
+                    <Field
+                      name="email"
+                      fullWidth
+                      required
+                      component={TextField}
+                      type="email"
+                      label="Email"
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Condition when="role" is="student">
+                      <Field
+                        fullWidth
+                        name="group"
+                        component={Select}
+                        label="Apply Group"
+                        formControlProps={{ fullWidth: true }}
+                      >
+                        <MenuItem value="Student">B-Tech CS</MenuItem>
+                      </Field>
+                    </Condition>
+                    <Condition when="role" is="faculty">
+                      <Field
+                        fullWidth
+                        name="group"
+                        component={Select}
+                        label="Apply Group"
+                        formControlProps={{ fullWidth: true }}
+                      >
+                        <MenuItem value="Faculty">Faculty</MenuItem>
+                      </Field>
+                    </Condition>
+                    <Condition when="role" is="admin">
+                      <Field
+                        fullWidth
+                        name="group"
+                        component={Select}
+                        label="Apply Group"
+                        formControlProps={{ fullWidth: true }}
+                      >
+                        <MenuItem value="Admin">Admin</MenuItem>
+                      </Field>
+                    </Condition>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <FormControl component="fieldset">
+                      <FormLabel component="legend">
+                        Where Do You want to create user
+                      </FormLabel>
+                      <RadioGroup row>
+                        <FormControlLabel
+                          label="Existing ID"
+                          control={
+                            <Field
+                              name="account"
+                              component={Radio}
+                              type="radio"
+                              value="existingid"
+                            />
+                          }
+                        />
+                        <FormControlLabel
+                          label="Create a new Account"
+                          control={
+                            <Field
+                              name="account"
+                              component={Radio}
+                              type="radio"
+                              value="newaccount"
+                            />
+                          }
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Condition when="account" is="existingid">
+                      <Field
+                        fullWidth
+                        required
+                        name="aid"
+                        component={TextField}
+                        type="text"
+                        label="Account ID"
+                      />
+                    </Condition>
+                  </Grid>
+                  <Grid item style={{ marginTop: 16 }}>
+                    <Button
+                      type="button"
+                      variant="contained"
+                      onClick={reset}
+                      disabled={submitting || pristine}
+                    >
+                      Reset
+                    </Button>
+                  </Grid>
+                  <Grid item style={{ marginTop: 16 }}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      type="submit"
+                      disabled={submitting}
+                    >
+                      Submit
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item style={{ marginTop: 16 }}>
-                  <Button
-                    type="button"
-                    variant="contained"
-                    onClick={reset}
-                    disabled={submitting || pristine}
-                  >
-                    Reset
-                  </Button>
-                </Grid>
-                <Grid item style={{ marginTop: 16 }}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                    disabled={submitting}
-                  >
-                    Submit
-                  </Button>
-                </Grid>
-              </Grid>
-            </Paper>
-          </form>
-        )}
-      />
-    </div>
+              </Paper>
+            </form>
+          )}
+        />
+      </div>
+      <div className="fr">
+        <CSVReader
+          cssClass="react-csv-input"
+          label="Select CSV with secret Death Star statistics"
+          onFileLoaded={handleForce}
+          parserOptions={papaparseOptions}
+        />
+      </div>
+      <div className="bt">
+        <button onClick={handleClick}> Upload </button>
+      </div>
+    </React.Fragment>
   );
 }

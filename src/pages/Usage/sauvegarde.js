@@ -95,6 +95,8 @@ const Sauvegarde = () => {
   const rendsub = () => {
     var tu1 = 0;
     var tu2 = 0;
+    var dt1 = 60;
+    var dt2 = 30;
     var tt1 = ty1 * 60;
     var tt2 = ty2 * 30;
     data.map((instance) => {
@@ -120,14 +122,14 @@ const Sauvegarde = () => {
             <td>Jupyter Notebook</td>
             <td>ml.t2.medium</td>
             <td>{ty1}</td>
-            <td>{tt1}</td>
+            <td>{dt1}</td>
             <td>{tt1 - tu1}</td>
           </tr>
           <tr>
             <td>Jupyter Notebook</td>
             <td>ml.t2.large</td>
             <td>{ty2}</td>
-            <td>{tt2}</td>
+            <td>{dt2}</td>
             <td>{tt2 - tu2}</td>
           </tr>
         </tbody>
@@ -146,7 +148,6 @@ const Sauvegarde = () => {
             <td>{instance.arn}</td>
             <td>{instance.iname}</td>
             <td>{instance.status}</td>
-            <td>{instance.tl}</td>
             <td>
               {instance.itype === "ml.t2.medium"
                 ? 60 - instance.tu
@@ -167,7 +168,6 @@ const Sauvegarde = () => {
             <th>Arn</th>
             <th>Name</th>
             <th>Status</th>
-            <th>Threshold Time</th>
             <th>Actual Usage</th>
           </tr>
         </thead>

@@ -78,8 +78,32 @@ export default function Home() {
     setData(data);
   };
   const handleClick = () => {
-    console.log(fdata);
+    //console.log(fdata);
+    var flag = 1;
     console.log(fdata.length);
+    fdata.map((user) => {
+      if (user.email && user.group && user.name && user.policy && user.role) {
+        Axios.post(url, {
+          name: user.name,
+          email: user.email,
+          role: user.role,
+          group: user.group,
+          policy: user.policy
+        })
+          .then((response) => {
+            console.log(response);
+          })
+          .catch((error) => {
+            flag = 0;
+            console.log(error);
+          });
+      }
+    });
+    if (flag === 1) {
+      window.alert("Users Created");
+    } else {
+      window.alert("Some Error Occured");
+    }
   };
   const papaparseOptions = {
     header: true,

@@ -73,7 +73,7 @@ export default function Home() {
     aid: ""
   });
   const url =
-    "https://4veg3aetvd.execute-api.us-east-2.amazonaws.com/dev/entry";
+    "https://0u6vb56kth.execute-api.us-east-2.amazonaws.com/dev/create";
   const handleForce = (data) => {
     setData(data);
   };

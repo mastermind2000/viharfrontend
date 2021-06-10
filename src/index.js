@@ -11,7 +11,7 @@ import Contact from "./pages/Contact/ContactPage";
 import sauvegarde from "./pages/Usage/sauvegarde";
 import creategroup from "./pages/CreateGroup/creategroup";
 import editgroup from "./pages/EditGroup/editgroup";
-import edituser from "./pages/EditUser/edituser";
+import Edituser from "./pages/EditUser/edituser";
 import "./index.css";
 
 const App = () => (
@@ -21,7 +21,7 @@ const App = () => (
       <Route exact={true} path="/" component={Home} />
       <Route exaxt path="/about" component={About} />
       <Route exact path="/contact" component={Contact} />
-      <Route exact path="/edituser" component={edituser} />
+      <Route exact path="/edituser" component={Edituser} />
       <Route exact path="/sauvegarde" component={sauvegarde} />
       <Route exact path="/creategroup" component={creategroup} />
       <Route exact path="/editgroup" component={editgroup} />

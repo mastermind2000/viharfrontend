@@ -26,7 +26,8 @@ import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 const Edituser = () => {
   const [value, setValue] = useState("");
   const [trigger, setTrigger] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(["Loading Press again"]);
+  var x = [];
   const url =
     "https://0u6vb56kth.execute-api.us-east-2.amazonaws.com/dev/get-user-group";
   const handleClick = () => {
@@ -36,13 +37,26 @@ const Edituser = () => {
         name: value
       })
       .then((response) => {
-        console.log(response);
+        setData(response.data.body);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
-  const renderTable = () => {};
+  const renderTable = () => {
+    return data.map((grp) => {
+      return <div>{grp}</div>;
+    });
+  };
+  const master = () => {
+    return (
+      <div className="table">
+        <div>Groups Of User</div>
+        <div>{renderTable()}</div>
+      </div>
+    );
+  };
   const onChange = (event) => {
     setValue(event.target.value);
   };
@@ -55,6 +69,7 @@ const Edituser = () => {
       <div>
         <button onClick={handleClick}> Show Details </button>
       </div>
+      <div>{trigger && master()}</div>
     </React.Fragment>
   );
 };
